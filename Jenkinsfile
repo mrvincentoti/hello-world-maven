@@ -8,7 +8,7 @@ node{
         sh "${mvnHome}/bin/mvn clean package"
     }
     stage('Deploy to Server'){
-        sshagent(['ubuntu-user']) {
+        sshagent(['ubuntu']) {
              sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@172.31.29.242:/home/ubuntu/'
         }
     }
