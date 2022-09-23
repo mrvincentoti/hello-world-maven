@@ -9,7 +9,7 @@ node{
     }
     stage('Deploy to Server'){
         sshagent(['ubuntu']) {
-             sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@172.31.29.242:/home/ubuntu/'
+             sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@54.91.176.151:/home/ubuntu/'
         }
     }
     // Email notification
