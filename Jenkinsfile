@@ -7,6 +7,11 @@ node{
         def mvnHome = tool name: '/opt/apache-maven-3.8.6', type: 'maven'
         sh "${mvnHome}/bin/mvn clean package"
     }
+    stage('Deploy to Server'){
+        sshagent(['ubuntu-user']) {
+             sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@172.31.29.242:/home/ubuntu/'
+        }
+    }
     // Email notification
     stage('Email Notification'){
         mail bcc: '', body: '''Hi,
