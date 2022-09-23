@@ -7,7 +7,7 @@ node{
         def mvnHome = tool name: '/opt/apache-maven-3.8.6', type: 'maven'
         sh "${mvnHome}/bin/mvn clean package"
     }
-    stage('Deploy to Server'){
+    stage('Deploy to Server(Ubuntu)'){
         sshagent(['ubuntu']) {
              sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@54.91.176.151:/home/ubuntu/'
         }
